@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="item"
+            type="c.y.s.pangu.app.api.entry.VideoItem"></variable>
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardElevation="5dp"
+        app:contentPadding="16dp">
+
+
+    <TextView
+        android:text="@{item.itemDesc}"
+        android:layout_width="match_parent"
+        android:id="@+id/textView"
+        android:layout_height="wrap_content"
+
+        />
+    </android.support.v7.widget.CardView>
+</LinearLayout>
+    </layout>

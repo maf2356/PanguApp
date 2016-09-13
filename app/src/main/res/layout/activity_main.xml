@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"></import>
+        <variable name="model" type="c.y.s.pangu.app.model.VModel"/>
+    </data>
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="RtlHardcoded"
+    >
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/mainAppbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        >
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/mainCollapsing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            >
+            <c.y.s.pangu.app.ui.view.CustomImageView
+                    android:id="@+id/mainPlaceholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/ic_launcher"
+                    android:tint="#11000000"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.5"
+                    />
+
+
+
+            <c.y.s.pangu.app.ui.view.CustomFrameLayout
+                android:id="@+id/mainFrameLayoutTitle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom|center_horizontal"
+                android:orientation="vertical"
+                android:visibility="visible"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0"
+                >
+
+                <LinearLayout
+                    android:id="@+id/mainLinearlayoutTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:orientation="vertical"
+                    >
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="4dp"
+                        android:lines="4"
+                        android:lineSpacingExtra="5dp"
+                        android:ellipsize="end"
+                        android:text="@{model.profiles}"
+                        android:textSize="12sp"
+                        android:textColor="@android:color/white"
+                        />
+
+                </LinearLayout>
+            </c.y.s.pangu.app.ui.view.CustomFrameLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        app:behavior_overlapTop="30dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/videosLayout"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mainToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:layout_anchor="@id/mainFrameLayoutTitle"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark"
+
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+
+            <Space
+                android:layout_width="@dimen/image_final_width"
+                android:layout_height="@dimen/image_final_width"
+                />
+
+            <TextView
+                android:id="@+id/mainTvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:gravity="center_vertical"
+                android:text="@{model.publisherName}"
+                android:textColor="@android:color/white"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textSize="16sp"
+                />
+
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="@dimen/image_width"
+        android:layout_height="@dimen/image_width"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/icon_youku"
+        app:border_color="@android:color/transparent"
+        app:border_width="2dp"
+        app:finalHeight="@dimen/image_final_width"
+        app:finalYPosition="2dp"
+        app:layout_behavior="c.y.s.pangu.app.ui.view.AvatarImageBehavior"
+        app:startHeight="2dp"
+        app:startToolbarPosition="2dp"
+        android:visibility="gone"
+        app:startXPosition="2dp"
+        />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:visibility="gone"
+        app:layout_anchor="@id/mainToolbar"
+        app:layout_anchorGravity="center_vertical|end"
+        app:srcCompat="@android:drawable/ic_dialog_email" />
+</android.support.design.widget.CoordinatorLayout>
+</layout>
